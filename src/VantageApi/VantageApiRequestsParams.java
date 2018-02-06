@@ -1,6 +1,7 @@
 package VantageApi;
 
 import ApiKey.ApiKey;
+import VantageApi.VantageApiParamEnums.Function;
 
 public class VantageApiRequestsParams {
     public String function;
@@ -12,7 +13,7 @@ public class VantageApiRequestsParams {
 public VantageApiRequestsParams(){
     //todo Enums für die Parameter erstellen
     //todo key in externe File Auslagern
-    this.function = "function=TIME_SERIES_DAILY";
+    this.function = "function=" + Function.TIME_SERIES_INTRADAY.getValue();
     this.symbol = "symbol=MSFT";
     this.apikey = ApiKey.getKey();
 }
