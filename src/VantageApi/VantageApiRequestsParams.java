@@ -1,5 +1,7 @@
 package VantageApi;
 
+import ApiKey.ApiKey;
+
 public class VantageApiRequestsParams {
     public String function;
     public String symbol;
@@ -12,6 +14,6 @@ public VantageApiRequestsParams(){
     //todo key in externe File Auslagern
     this.function = "function=TIME_SERIES_DAILY";
     this.symbol = "symbol=MSFT";
-    this.apikey = "";
+    this.apikey = ApiKey.getKey();
 }
 }
