@@ -1,6 +1,6 @@
 package VantageApi.VantageApiParamEnums;
 
-public enum Function {
+public enum Function implements ApiParameter{
     TIME_SERIES_INTRADAY("TIME_SERIES_INTRADAY"),
     TIME_SERIES_DAILY("TIME_SERIES_DAILY"),
     TIME_SERIES_DAILY_ADJUSTED("TIME_SERIES_DAILY_ADJUSTED"),

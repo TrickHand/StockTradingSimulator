@@ -1,6 +1,6 @@
 package VantageApi.VantageApiParamEnums;
 
-public enum Symbol {
+public enum Symbol implements ApiParameter{
     Microsoft_Corporation("MSFT"),
     Samsung("SSNLF"),
     Nintendo("NTDOY"),

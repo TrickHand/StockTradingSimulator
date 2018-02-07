@@ -1,6 +1,6 @@
 package VantageApi.VantageApiParamEnums;
 
-public enum Datatype {
+public enum Datatype implements ApiParameter {
 
     JSON("json"),
     CSV("csv");

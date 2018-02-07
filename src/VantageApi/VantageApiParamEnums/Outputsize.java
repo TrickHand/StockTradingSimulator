@@ -1,6 +1,6 @@
 package VantageApi.VantageApiParamEnums;
 
-public enum Outputsize {
+public enum Outputsize implements ApiParameter{
     COMPACT("compact"),
     FULL("60min");
 

@@ -17,13 +17,17 @@ public class StockTimeSeries {
     }
 
     public static String getTime_Series_Intraday(Symbol symbol, Interval interval, Outputsize outputsize, Datatype datatype) {
+        String requestString = RequestStringBuilder(Function.TIME_SERIES_INTRADAY, symbol, interval, outputsize, datatype);
+        return VantageApiRequests.RequestData(requestString);
+    }
+
+    public static String RequestStringBuilder(Function function, ApiParameter... parameters) {
         StringBuilder requestParams = new StringBuilder();
-        requestParams.append(Function.TIME_SERIES_INTRADAY.getValue());
-        requestParams.append(symbol.getValue());
-        requestParams.append(interval.getValue());
-        requestParams.append(outputsize.getValue());
-        requestParams.append(datatype.getValue());
+        requestParams.append(function.getValue());
+        for (ApiParameter param : parameters) {
+            requestParams.append(param.getValue());
+        }
         requestParams.append(ApiKey.getKey());
-        return VantageApiRequests.RequestData(requestParams.toString());
+        return requestParams.toString();
     }
 }

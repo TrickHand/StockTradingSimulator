@@ -1,6 +1,6 @@
 package VantageApi.VantageApiParamEnums;
 
-public enum Interval {
+public enum Interval implements ApiParameter{
     MINUTES_1("1min"),
     MINUTES_5("5min"),
     MINUTES_15("15min"),
