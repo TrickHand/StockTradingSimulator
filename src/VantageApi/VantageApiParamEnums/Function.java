@@ -15,11 +15,7 @@ public enum Function {
         this.urlParameter = urlParameter;
     }
 
-    public String getKey() {
-        return "function";
-    }
-
     public String getValue() {
-        return urlParameter;
+        return "function=" + urlParameter;
     }
 }

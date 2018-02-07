@@ -1,28 +1,35 @@
 package VantageApi;
 
+import com.sun.jndi.toolkit.url.Uri;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 
 public class VantageApiRequests {
-    public String getData(VantageApiRequestsParams params){
+    private final static String BASE_URL = "https://www.alphavantage.co/query?";
+    public static String RequestData(String requestMethodString){
         try {
-            URL url = new URL("https://www.alphavantage.co/query?" + params.function + "&" + params.symbol + "&" +  params.apikey);
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("GET");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            URL url = new URL(BASE_URL + requestMethodString);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
 
-            StringBuilder erg = new StringBuilder();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuilder response = new StringBuilder();
             String line;
-            while ((line = reader.readLine()) != null){
-                erg.append(line);
+            while ((line = bufferedReader.readLine()) != null){
+                response.append(line);
             }
-            reader.close();
-            return erg.toString();
 
+            bufferedReader.close();
+            return response.toString();
+
+        } catch (ProtocolException e) {
+            e.printStackTrace();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
