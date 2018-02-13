@@ -1,5 +1,7 @@
 package VantageApi;
 
+import Objects.JsonToObjectParser;
+import Objects.Result;
 import com.sun.jndi.toolkit.url.Uri;
 
 import java.io.BufferedReader;
@@ -12,21 +14,14 @@ import java.net.URL;
 
 public class VantageApiRequests {
     private final static String BASE_URL = "https://www.alphavantage.co/query?";
-    public static String RequestData(String requestMethodString){
+    public static Result RequestData(String requestMethodString){
         try {
             URL url = new URL(BASE_URL + requestMethodString);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
 
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            StringBuilder response = new StringBuilder();
-            String line;
-            while ((line = bufferedReader.readLine()) != null){
-                response.append(line);
-            }
-
-            bufferedReader.close();
-            return response.toString();
+            Result res = JsonToObjectParser.parseJsonToObject(connection.getInputStream());
+            return res;
 
         } catch (ProtocolException e) {
             e.printStackTrace();
@@ -35,6 +30,6 @@ public class VantageApiRequests {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "error";
+        return null;
     }
 }

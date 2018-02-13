@@ -1,5 +1,6 @@
 package VantageApi;
 
+import Objects.Result;
 import VantageApi.VantageApiParamEnums.Interval;
 import VantageApi.VantageApiParamEnums.Symbol;
 
@@ -13,10 +14,9 @@ public class ApiTest {
 //        String daily = StockTimeSeries.getTime_Series_Daily(Symbol.Nintendo);
 //        System.out.println(daily);
 
-        String weekly = StockTimeSeries.getTime_Series_Daily(Symbol.Nintendo);
-        System.out.println(weekly);
+        Result weekly = StockTimeSeries.getTime_Series_Daily(Symbol.Nintendo);
 
-        String monthly = StockTimeSeries.getTime_Series_Daily(Symbol.Nintendo);
-        System.out.println(monthly);
+//        String monthly = StockTimeSeries.getTime_Series_Daily(Symbol.Nintendo);
+//        System.out.println(monthly);
     }
 }
