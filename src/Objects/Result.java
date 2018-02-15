@@ -1,10 +1,12 @@
 package Objects;
 
+import java.util.List;
+
 public class Result {
     private MetaData metaData;
-    private TimeSeries timeSeries;
+    private List<TimeSeries> timeSeries;
 
-    public Result(MetaData metaData, TimeSeries timeSeries) {
+    public Result(MetaData metaData, List<TimeSeries> timeSeries) {
         this.metaData = metaData;
         this.timeSeries = timeSeries;
     }
@@ -20,11 +22,11 @@ public class Result {
         this.metaData = metaData;
     }
 
-    public TimeSeries getTimeSeries() {
+    public List<TimeSeries> getTimeSeries() {
         return timeSeries;
     }
 
-    public void setTimeSeries(TimeSeries timeSeries) {
+    public void setTimeSeries(List<TimeSeries> timeSeries) {
         this.timeSeries = timeSeries;
     }
 }

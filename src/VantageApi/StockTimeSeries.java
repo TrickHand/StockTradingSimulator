@@ -1,8 +1,11 @@
 package VantageApi;
 
 import ApiKey.ApiKey;
+import Objects.JsonToObjectParser;
 import Objects.Result;
 import VantageApi.VantageApiParamEnums.*;
+
+import javax.json.JsonObject;
 
 public class StockTimeSeries {
     public static Result getTime_Series_Intraday(Symbol symbol, Interval interval) {
@@ -19,7 +22,8 @@ public class StockTimeSeries {
 
     public static Result getTime_Series_Intraday(Symbol symbol, Interval interval, Outputsize outputsize, Datatype datatype) {
         String requestString = RequestStringBuilder(Function.TIME_SERIES_INTRADAY, symbol, interval, outputsize, datatype);
-        return VantageApiRequests.RequestData(requestString);
+        JsonObject obj = VantageApiRequests.RequestData(requestString);
+        return JsonToObjectParser.parseJsonToObject(obj, "Time Series (Intraday)");
     }
 
 
@@ -37,7 +41,8 @@ public class StockTimeSeries {
 
     public static Result getTime_Series_Daily(Symbol symbol, Outputsize outputsize, Datatype datatype) {
         String requestString = RequestStringBuilder(Function.TIME_SERIES_DAILY, symbol, outputsize, datatype);
-        return VantageApiRequests.RequestData(requestString);
+        JsonObject obj = VantageApiRequests.RequestData(requestString);
+        return JsonToObjectParser.parseJsonToObject(obj, "Time Series (Daily)");
     }
 
 
@@ -47,7 +52,8 @@ public class StockTimeSeries {
 
     public static Result getTime_Series_Weekly(Symbol symbol, Datatype datatype) {
         String requestString = RequestStringBuilder(Function.TIME_SERIES_WEEKLY, symbol, datatype);
-        return VantageApiRequests.RequestData(requestString);
+        JsonObject obj = VantageApiRequests.RequestData(requestString);
+        return JsonToObjectParser.parseJsonToObject(obj, "Time Series (Weekly)");
     }
 
 
@@ -57,7 +63,8 @@ public class StockTimeSeries {
 
     public static Result getTime_Series_Monthly(Symbol symbol, Datatype datatype) {
         String requestString = RequestStringBuilder(Function.TIME_SERIES_MONTHLY, symbol, datatype);
-        return VantageApiRequests.RequestData(requestString);
+        JsonObject obj = VantageApiRequests.RequestData(requestString);
+        return JsonToObjectParser.parseJsonToObject(obj, "Time Series (Monthly)");
     }
 
 

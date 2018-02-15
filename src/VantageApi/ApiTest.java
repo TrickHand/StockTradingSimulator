@@ -15,7 +15,7 @@ public class ApiTest {
 //        System.out.println(daily);
 
         Result weekly = StockTimeSeries.getTime_Series_Daily(Symbol.Nintendo);
-
+        System.out.println(weekly);
 //        String monthly = StockTimeSeries.getTime_Series_Daily(Symbol.Nintendo);
 //        System.out.println(monthly);
     }
