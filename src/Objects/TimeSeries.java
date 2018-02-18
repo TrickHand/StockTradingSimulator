@@ -1,12 +1,14 @@
 package Objects;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class TimeSeries {
-    private String date, open, high, low, close, volume;
+    private Date date;
+    private double close,open, high, low, volume;
 
-    public TimeSeries(String date, String open, String high, String low, String close, String volume) {
+    public TimeSeries(Date date, double open, double high, double low, double close, double volume) {
         this.date = date;
         this.open = open;
         this.high = high;
@@ -18,51 +20,51 @@ public class TimeSeries {
     public TimeSeries() {
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public String getOpen() {
+    public double getOpen() {
         return open;
     }
 
-    public void setOpen(String open) {
+    public void setOpen(double open) {
         this.open = open;
     }
 
-    public String getHigh() {
+    public double getHigh() {
         return high;
     }
 
-    public void setHigh(String high) {
+    public void setHigh(double high) {
         this.high = high;
     }
 
-    public String getLow() {
+    public double getLow() {
         return low;
     }
 
-    public void setLow(String low) {
+    public void setLow(double low) {
         this.low = low;
     }
 
-    public String getClose() {
+    public double getClose() {
         return close;
     }
 
-    public void setClose(String close) {
+    public void setClose(double close) {
         this.close = close;
     }
 
-    public String getVolume() {
+    public double getVolume() {
         return volume;
     }
 
-    public void setVolume(String volume) {
+    public void setVolume(double volume) {
         this.volume = volume;
     }
 }

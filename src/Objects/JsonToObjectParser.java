@@ -2,7 +2,10 @@ package Objects;
 
 import javax.json.JsonObject;
 import javax.json.JsonReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class JsonToObjectParser {
@@ -43,14 +46,19 @@ public class JsonToObjectParser {
     private static List<TimeSeries> getTimeSeries(JsonObject jso, String TimeSeriesKeyword) {
         List<TimeSeries> list = new ArrayList<TimeSeries>();
         JsonObject tmp = jso.getJsonObject(TimeSeriesKeyword);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
         for (Object key : tmp.keySet()) {
             String keyStr = (String) key;
             JsonObject jsoTmp = tmp.getJsonObject(keyStr);
-
-            list.add(new TimeSeries(keyStr, jsoTmp.getString("1. open"),
-                    jsoTmp.getString("2. high"), jsoTmp.getString("3. low"), jsoTmp.getString("4. close"),
-                    jsoTmp.getString("5. volume")));
+            try {
+                Date date = formatter.parse(keyStr);
+                list.add(new TimeSeries(date, Double.parseDouble(jsoTmp.getString("1. open")),
+                        Double.parseDouble(jsoTmp.getString("2. high")), Double.parseDouble(jsoTmp.getString("3. low")),Double.parseDouble(jsoTmp.getString("4. close")),
+                        Double.parseDouble(jsoTmp.getString("5. volume"))));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
         return list;
     }
